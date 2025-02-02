@@ -45,7 +45,7 @@ export class HotelDecorator implements HotelDecoratorType {
   // to avoid image caching, add a v=id to the image URL
   get imageUrl() {
     return this.hotel.property.previewImage?.url
-      ? `${this.hotel.property.previewImage?.url}v=${this.hotel.id}`
+      ? `${this.hotel.property.previewImage?.url}&v=${this.hotel.id}`
       : ''
   }
 }
