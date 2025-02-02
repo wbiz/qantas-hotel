@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 ## Getting Started
 
-First, run the development server:
+1. install the dependencies:
+    ```bash
+    npm install
+    ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. run the server:
+    ```bash
+    npm run dev
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. run test and coverage
+    ```bash
+    npm run test:coverage
+    ```
+coverage report can be found under `coverage/lcov-report/index.html`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
+ * Next.js 15, App router, Server Components
+ * Typescript, Tailwind, Jest, Testing Library
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Design Patterns
+### Decorator pattern
+To separate data transformation from component rendering.
 
-## Learn More
+Alternatively, we can:
+* transform the data from API server
+* transform the data in the ingestion layer
 
-To learn more about Next.js, take a look at the following resources:
+### Strategy pattern
+To separate the data fetching from the service so that we can extend more
+strategies (e.g. DBLoader, MemoryLoader, APILoader) easily without changing
+the existing service code. 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+And make it easy to test the service with a mock loader.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Trade-offs
+Due to time constraints, I made the following trade-offs:
+* I used a simple design with tailwind instead a design system
+* I only covered few lib files and 1 component in the test
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## What's next
+before going to production, I would:
+* add pagination / lazy loading to avoid loading all the data at once
+* structure the code in a more modular way (atomic design) with sub-folders
+* extract more components out of the HotelCard
+* check accessibility against WCAG 2.1
+* check core web vitals (lighthouse)
+* replace console.log with a logger
+* add more tests
+* add pre-commit hooks to run tests before commit
+* tune the types against the API
+* add cypress e2e tests
+* align tailwind breakpoints with design
+* reduce the size of the bundle
+* reduce dom
+* 
