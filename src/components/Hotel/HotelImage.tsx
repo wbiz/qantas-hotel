@@ -19,6 +19,8 @@ export default function HotelImage({
         width={145}
         height={125}
         className="w-full max-h-[200px] object-cover sm:w-[145px] sm:h-[125px]"
+        placeholder="blur"
+        blurDataURL="/loading.gif"
       />
       {promotion ? (
         <div className="absolute top-2 bg-white text-[red] text-xs font-bold px-2 py-1">

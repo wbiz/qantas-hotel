@@ -1,5 +1,9 @@
 ## Getting Started
 
+0. use nvm to switch the node version(v20):
+   ```bash
+   nvm use
+   ```
 1. install the dependencies:
     ```bash
     npm install
