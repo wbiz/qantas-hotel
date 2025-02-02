@@ -5,9 +5,9 @@ import { HotelDecoratorType } from '@/types/types.ts'
 
 export default async function HotelList({
   hotels,
-}: {
+}: Readonly<{
   hotels: HotelDecoratorType[]
-}) {
+}>) {
   return (
     <>
       <div className="flex">

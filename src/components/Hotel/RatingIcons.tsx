@@ -11,11 +11,12 @@ export const Circle = ({
 }: { type: RatingIconType; size?: number } & WithKeyProps) => {
   const leftColor = type === 'empty' ? EMPTY_BG_COLOR : FILLED_BG_COLOR
   const rightColor = type === 'filled' ? FILLED_BG_COLOR : EMPTY_BG_COLOR
+  const safeSize = size || DEFAULT_SIZE
 
   return (
     <div
       className="relative rounded-full overflow-hidden"
-      style={{ width: `${size}px`, height: `${size}px` }}
+      style={{ width: `${safeSize}px`, height: `${safeSize}px` }}
     >
       <div className={`absolute left-0 top-0 w-1/2 h-full ${leftColor}`}></div>
       <div
@@ -31,13 +32,14 @@ export const Star = ({
 }: { type: RatingIconType; size?: number } & WithKeyProps) => {
   const leftColor = type === 'empty' ? EMPTY_COLOR : FILLED_COLOR
   const rightColor = type === 'filled' ? FILLED_COLOR : EMPTY_COLOR
+  const safeSize = size || DEFAULT_SIZE
 
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"
-      width={size as number}
-      height={size as number}
+      width={safeSize}
+      height={safeSize}
     >
       <polygon
         points="50,10 61,35 98,35 68,57 79,91 50,70 21,91 32,57 2,35 39,35"

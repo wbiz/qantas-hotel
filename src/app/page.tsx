@@ -3,9 +3,9 @@ import { fetchHotels } from '@/lib/hotelService'
 
 export default async function Home({
   searchParams,
-}: {
+}: Readonly<{
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}) {
+}>) {
   let sort = (await searchParams)?.sort
   if (Array.isArray(sort)) {
     sort = sort[0]

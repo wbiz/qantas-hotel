@@ -8,7 +8,11 @@ export interface ProductLoader {
 }
 export class JsonProductLoader implements ProductLoader {
   constructor(
-    private filePath: string = path.join(process.cwd(), 'src/lib', 'data.json')
+    private readonly filePath: string = path.join(
+      process.cwd(),
+      'src/lib',
+      'data.json'
+    )
   ) {}
 
   private sortProducts(hotels: Hotel[], sort: string): Hotel[] {

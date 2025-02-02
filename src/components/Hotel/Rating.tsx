@@ -11,7 +11,7 @@ export const Rating = ({
 }) => {
   const ratingStyles = getRatingStyles(rating)
   const Comp = type === 'self' ? Circle : Star
-
+  // todo to avoid index as key, getRatingStyles should return an array of objects with a key
   return (
     <div className="flex gap-[2]">
       {ratingStyles.map((style, i) => {

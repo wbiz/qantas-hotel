@@ -2,10 +2,10 @@ import { RatingIconType } from '@/types/types'
 
 export const getRatingStyles = (rating: number): RatingIconType[] => {
   if (isNaN(rating) || rating < 0) {
-    return ['empty', 'empty', 'empty', 'empty', 'empty'];
+    return ['empty', 'empty', 'empty', 'empty', 'empty']
   }
-  if(rating >= 5) {
-    return ['filled', 'filled', 'filled', 'filled', 'filled'];
+  if (rating >= 5) {
+    return ['filled', 'filled', 'filled', 'filled', 'filled']
   }
   const highR = Math.ceil(rating)
   return Array.from({ length: 5 }, (_, i) => {

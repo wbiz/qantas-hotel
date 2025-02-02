@@ -5,25 +5,14 @@ export class HotelDecorator implements HotelDecoratorType {
   property: Property
   offer: Offer
 
-  constructor(private hotel: Hotel) {
+  constructor(private readonly hotel: Hotel) {
     this.id = hotel.id
     this.property = hotel.property
     this.offer = hotel.offer
-
-    return new Proxy(this, {
-      get(target, prop) {
-        // return it, if the requested property exists on the decorator
-        if (prop in target) {
-          return target[prop as keyof HotelDecorator]
-        }
-        // Otherwise, fallback to the original object
-        return target.hotel[prop as keyof typeof target.hotel]
-      },
-    })
   }
 
   get fullAddress() {
-    return this.hotel.property.address?.join(', ') || ''
+    return this.hotel.property.address?.join(', ') ?? ''
   }
 
   get priceLabel() {
@@ -39,7 +28,7 @@ export class HotelDecorator implements HotelDecoratorType {
     )
   }
   get saving() {
-    return Math.ceil(this.hotel.offer.savings?.amount || 0)
+    return Math.ceil(this.hotel.offer.savings?.amount ?? 0)
   }
 
   // to avoid image caching, add a v=id to the image URL

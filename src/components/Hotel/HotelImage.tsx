@@ -4,11 +4,11 @@ export default function HotelImage({
   url,
   caption,
   promotion,
-}: {
+}: Readonly<{
   url: string
   caption?: string
   promotion?: string
-}) {
+}>) {
   if (!url) return null
   return (
     <div className="relative my-2 w-full h-full sm:w-[145px] sm:h-[125px]">
