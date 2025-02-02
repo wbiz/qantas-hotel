@@ -19,8 +19,13 @@ export default function Sort() {
   }
   return (
     <div>
-      Sort by{' '}
-      <select onChange={handleSortChange} value={sort}>
+      <label htmlFor="sort-select">Sort by </label>
+      <select
+        id="sort-select"
+        onChange={handleSortChange}
+        value={sort}
+        aria-label="Sort Hotels"
+      >
         <option value="">default</option>
         <option value="desc">Price high-low</option>
         <option value="asc">Price low-high</option>
